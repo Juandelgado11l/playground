@@ -51,6 +51,7 @@ fun SingUpScreen() {
             mutableStateOf("")
         }
 
+
     OutlinedTextField(value = nombre, onValueChange = {
         nombre = it
     }, label = {
@@ -147,3 +148,4 @@ fun SingUpScreenPreview() {
         SingUpScreen()
     }
 }
+

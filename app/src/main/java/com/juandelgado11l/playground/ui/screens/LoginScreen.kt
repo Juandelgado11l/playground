@@ -23,12 +23,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.juandelgado11l.playground.R
+import com.juandelgado11l.playground.ui.NavigationItem
 import com.juandelgado11l.playground.ui.theme.PlaygroundTheme
 
 @Composable
-
-fun LoginScreen() {
+fun LoginScreen(navHostController: NavHostController) {
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -54,7 +56,7 @@ fun LoginScreen() {
 
         Button(modifier = Modifier.width(250.dp),
             colors = ButtonDefaults.buttonColors(Color.Black),
-            onClick = { /*TODO*/ }) {
+            onClick = { navHostController.navigate(NavigationItem.SignIn.route) }) {
             Text(text = "Iniciar sesión")
         }
 
@@ -62,7 +64,7 @@ fun LoginScreen() {
             modifier = Modifier.width(250.dp),
             border = BorderStroke(1.dp, Color.Black),
             colors = ButtonDefaults.outlinedButtonColors(),
-            onClick = { /*TODO*/ }) {
+            onClick = {navHostController.navigate(NavigationItem.SignUp.route) }) {
             Text(text = "Registrarse", color = Color.Black)
         }
 
@@ -72,9 +74,8 @@ fun LoginScreen() {
 @Preview(showBackground = true)
 @Composable
 fun LoginScreenPreview() {
-
     PlaygroundTheme {
-        LoginScreen()
+        LoginScreen(rememberNavController())
     }
 }
 
